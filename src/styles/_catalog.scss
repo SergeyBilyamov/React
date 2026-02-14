@@ -1,0 +1,561 @@
+@import 'variables';
+
+
+
+details > summary {
+  list-style: none;
+}
+
+
+.catalog-nav {
+  padding: 60px 0;
+  text-align: center;
+  background:$background-color-nav;
+  .catalog-title {
+    font-family: $font-main;
+    font-size: 24px;
+    font-weight: 400;
+    color: $accent-color;
+  }
+  .breadcrumb {
+    color: $filter-color;
+    font-size: 14px;
+  }
+}
+
+.filter-sort {
+  height: 132px;
+  padding-top: 39px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+}
+
+.filter {
+  padding: 0;
+  width: 360px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease;
+
+  &[open] {
+    box-shadow: 6px 4px 35px 0px #00000036;
+  }
+
+  &[open] .filter__heading{
+    color: $accent-color;
+  }
+
+  &[open] path {
+    fill: $accent-color;
+  }
+
+  &__summary{
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 13px;
+    background: #ffffff;
+    cursor: pointer;
+    list-style: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: $text-color;
+}
+
+  &_content {
+    background: #ffffff;
+    border: 1px solid #ebebeb;
+    border-top: none;           // убираем верхнюю границу, чтобы не было двойной линии
+    overflow: hidden;
+    margin-top: -1px;
+    padding: 0px 13px 16px;
+    width: 100%;         // растягивается на всю ширину .filter
+    box-sizing: border-box;
+    box-shadow: 0 6px 30px -6px #00000036;
+    z-index: 0;
+  }
+
+  &__heading {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: $text-color;
+  }
+
+  &__head {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $filter-color;
+    padding: 8px 11px 11px 11px;
+    border-bottom: 1px solid #EBEBEB;
+    border-left: 5px solid $accent-color;
+  }
+  
+  &_item {
+    margin-top: 16px;
+  }
+
+  &_item[open] .filter__head{
+    color: $accent-color;
+  }
+
+  &__link-box {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    padding: 24px 16px 8px;
+  }
+
+  &__link {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $subtext-color;
+    text-decoration: none;
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+}
+
+.sort {
+  padding: 12px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 18px;
+
+  &__details{
+    position: relative;
+  }
+
+  &__summary{
+    display: flex;
+    align-items: center;
+    gap: 10px
+  }
+
+  &__check{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: $font-check-box;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: $filter-color;
+    label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+  }
+
+  &__heading{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $filter-color;
+  }
+
+  &__box{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #FFFFFF;
+    box-shadow: 6px 4px 35px 0px #00000036;
+    padding: 7px 30px 11px 9px;
+    position: absolute;
+    left: -9px;
+    top: 22px;
+    z-index: 1;
+  }
+}
+
+// === Pagination Wrapper — рамка вокруг всей пагинации ===
+
+.pagination-wrapper {
+  margin: 0 auto 96px;
+  max-width: $width-site;
+}
+
+.pagination {
+  width: 284px;
+  height: 44px;
+  border: 1px solid #ebebeb;
+  border-radius: 4px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  margin: 0 auto;
+  font-family: $font-main;
+  box-sizing: border-box;
+
+  // Фиксированная высота — текст по центру
+  line-height: 1;
+}
+
+.pagination__arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: $text-color;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  svg {
+    width: 12px;
+    height: 12px;
+    color: $text-color;
+    transition: color 0.3s ease;
+  }
+
+  &:hover {
+    svg {
+      color: $accent-color;
+    }
+  }
+}
+
+// Центральный блок с номерами
+.pagination__numbers {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: $text-color;
+  flex: 1;
+  justify-content: center;
+  margin: 0 16px; // 16px от стрелок
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pagination__number {
+  min-width: 18px;
+  text-decoration: none;
+  color: $text-color;
+  transition: color 0.3s ease;
+
+  &.active {
+    color: $accent-color;
+    font-weight: 700;
+  }
+
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+.pagination__ellipsis {
+  color: $filter-color;
+  margin: 0 4px;
+}
+
+.subscribe-block {
+  background: #fafafa; padding: 60px 0; text-align: center;
+  .subscribe-form { background: #fff; display: inline-block; padding: 12px; margin-top: 10px; }
+}
+
+
+/* Small mobile adjustments (≤375px) */
+@media (max-width: 375px) {
+    .burger-button {
+        margin-right: 25px;
+    }
+
+    .header_logo {
+        padding-left: 16px;
+    }
+
+    // === КРИТИЧНО: меняем поведение контейнера внутри .catalog-nav ===
+    .catalog-nav .header_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px; // можно убрать, если используем margin у элементов
+    }
+
+    // Основной блок
+    .catalog-nav {
+        padding: 24px 0 46px;
+        text-align: center;
+    }
+
+    // Заголовок — в одну строку, по центру
+    .catalog-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0 auto 32px;
+        max-width: 100%;
+        font-size: 20px;
+        line-height: 1.2;
+    }
+
+    // Хлебные крошки — под заголовком
+    .breadcrumb {
+        display: block;
+        margin: 0 auto;
+        font-size: 14px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .filter-sort.center {
+    height: 81px !important;
+    padding-top: 0;
+    box-sizing: border-box;
+}
+
+    .filter__heading {
+        display: none !important;
+    }
+
+    .filter {
+        width: auto;
+        margin-left: 8px;
+        position: relative;
+        height: 25px;
+    }
+
+    .filter__summary {
+        padding: 0;
+        margin-top: 24px; // отступ от предыдущего блока
+        justify-content: left; // центрируем содержимое (иконку)
+        box-sizing: border-box;
+    }
+
+    // Убедимся, что иконка вписывается и центрирована
+    .filter__summary svg {
+        width: 37px;
+        height: 25px;
+    }
+
+     .filter_content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 280px;     // фиксированная ширина меню
+        max-height: 300px;
+        background: #ffffff;
+        border: 1px solid #ebebeb;
+        box-shadow: 0 6px 30px -6px #00000036;
+        z-index: 10;
+        overflow-y: auto;
+        margin-top: -1px;
+        padding: 16px 13px;
+        box-sizing: border-box;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+
+    // убираем стандартные отступы у списка
+    .filter__link-box {
+        margin: 0;
+        padding: 0;
+    }
+
+    // === ВАЖНО: .filter-sort остаётся flex, но .filter не растягивается при открытии ===
+    .filter-sort {
+        flex-wrap: nowrap; // или просто оставить, как есть
+    }
+
+        // === Сортировка: привязка к правому краю ===
+    .filter-sort {
+        gap: 24px; // между .filter и .sort
+    }
+
+    .sort {
+        margin-left: auto;
+        margin-right: 8px;
+        margin-top: 24px;
+        padding: 0;
+        height: 81px;
+    }
+
+    .sort__summary {
+        font-size: 14px;
+        gap: 8px;
+    }
+
+    .sort__details{
+      height: 17px;
+    }
+
+    .sort__box {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        background: #ffffff;
+        box-shadow: 6px 4px 35px 0px #00000036;
+        border: 1px solid #ebebeb;
+        padding: 7px 30px 11px 9px;
+        z-index: 10;
+        max-height: 260px;
+        overflow-y: auto;
+    }
+
+    // Убираем горизонтальный скролл при анимациях
+    .sort__details[open] .sort__box {
+      overflow: auto;
+    }
+
+    .pagination-wrapper{
+      margin-bottom: 64px;
+    }
+}
+
+/* Medium mobile adjustments (≤425px) — same as 375px */
+@media (max-width: 425px) {
+  .burger-button {
+    margin-right: 25px;
+  }
+
+  .header_logo {
+    padding-left: 16px;
+  }
+
+  .catalog-nav .header_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .catalog-nav {
+    padding: 24px 0 46px !important;
+    text-align: center;
+  }
+
+  .catalog-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 auto 32px;
+    max-width: 100%;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .breadcrumb {
+    display: block;
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .filter-sort.center {
+    height: 81px !important;
+    padding-top: 0;
+    box-sizing: border-box;
+  }
+
+  .filter__heading {
+    display: none !important;
+  }
+
+  .filter {
+    width: auto;
+    margin-left: 8px;
+    position: relative;
+    height: 25px;
+  }
+
+  .filter__summary {
+    padding: 0;
+    margin-top: 24px;
+    justify-content: left;
+    box-sizing: border-box;
+  }
+
+  .filter__summary svg {
+    width: 37px;
+    height: 25px;
+  }
+
+  .filter_content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 280px;
+    max-height: 300px;
+    background: #ffffff;
+    border: 1px solid #ebebeb;
+    box-shadow: 0 6px 30px -6px #00000036;
+    z-index: 10;
+    overflow-y: auto;
+    margin-top: -1px;
+    padding: 16px 13px;
+    box-sizing: border-box;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .filter__link-box {
+    margin: 0;
+    padding: 0;
+  }
+
+  .filter-sort {
+    gap: 24px;
+  }
+
+  .sort {
+    margin-left: auto;
+    margin-right: 8px;
+    margin-top: 24px;
+    padding: 0;
+    height: 81px;
+  }
+
+  .sort__summary {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .sort__details {
+    height: 17px;
+  }
+
+  .sort__box {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background: #ffffff;
+    box-shadow: 6px 4px 35px 0px #00000036;
+    border: 1px solid #ebebeb;
+    padding: 7px 30px 11px 9px;
+    z-index: 10;
+    max-height: 260px;
+    overflow-y: auto;
+  }
+
+  .sort__details[open] .sort__box {
+    overflow: auto;
+  }
+
+  .pagination-wrapper {
+    margin-bottom: 64px;
+  }
+}

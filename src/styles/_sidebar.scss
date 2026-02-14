@@ -1,0 +1,84 @@
+@import 'variables';
+
+.menu-toggle { display: none; }
+.burger-button { cursor: pointer; }
+
+.sidebar-menu {
+  position: absolute;
+  top: $header-height;
+  right: 0;
+  width: $menu-width;
+  height: $menu-height;
+  background-color: #fff;
+  box-shadow: $menu-shadow;
+  padding-top: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  overflow-y: auto;
+
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+
+}
+
+.sidebar-menu.show {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Menu typography */
+.menu-title {
+  font-family: $font-main;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: $text-color;
+  margin-bottom: 24px;
+  padding-left: 0;
+}
+
+.menu-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 20px; }
+
+.menu-list > li > a {
+  font-family: $font-main;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: $accent-color;
+  text-decoration: none;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.menu-list > li > a:hover { text-decoration: underline; }
+
+.submenu { list-style: none; padding-left: 22px; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+
+.submenu li a {
+  font-family: $font-main;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: $subtext-color;
+  text-decoration: none;
+  display: block;
+}
+
+.submenu li a:hover { color: $accent-color; }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  display: block;
+}

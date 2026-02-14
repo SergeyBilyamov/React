@@ -1,0 +1,610 @@
+.cart {
+  padding: 96px 0 128px;
+  background: rgba(255, 255, 255, 1);
+}
+
+.cart__container {
+  max-width: $width-site;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.cart__columns {
+  display: flex;
+  gap: 128px;  // ← теперь 128px между колонками
+  align-items: flex-start;
+}
+
+// --- ЛЕВАЯ КОЛОНКА: ТОВАРЫ ---
+
+.cart__items-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;  // ← Отступ между блоком карточек и кнопками
+  width: 652px;
+}
+
+.cart__items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.cart-item {
+  position: relative;
+  display: flex;
+  gap: 31px;
+  background: #fff;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 652px;
+  border: 1px solid rgba(234, 234, 234, 1);
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgba(234, 234, 234, 1);
+  box-shadow: 17px 19px 24px 0px rgba(0, 0, 0, 0.13);
+}
+
+// --- КНОПКИ ---
+.cart-actions {
+  padding-top: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 192px;  // ← расстояние между кнопками
+}
+
+.btn-clear {
+  width: 235px;
+  height: 50px;
+  border: 1px solid rgba(164, 164, 164, 1);
+  background: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 17px;
+  color: #222;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-continue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 225px;           
+  height: 50px;
+  border: 1px solid rgba(164, 164, 164, 1);
+  background: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 17px;
+  color: #222;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+// При наведении — обе ведут себя одинаково
+.btn-clear:hover,
+.btn-continue:hover {
+  background: #f8f8f8;
+  border-color: #b8b8b8;
+  color: $accent-color;
+}
+
+// Отступ между карточками — 40px
+.cart-item + .cart-item {
+  margin-top: 40px; // ← расстояние между первой и второй
+}
+
+.cart-item__image {
+  width: 262px;
+  height: 306px;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.cart-item__details {
+  width: 390px;
+  height: 306px;
+  padding: 22px 0 0 31px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.details-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 42px;
+}
+
+.product-title {
+  width: 262px;
+  height: 58px;
+  color: rgba(34, 34, 34, 1);
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29px;
+  margin: 0;
+  text-align: left;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 28px;
+  right: 22px;
+  width: 18px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+  }
+
+  path {
+    fill: #575757;
+  }
+}
+
+.product-price,
+.product-info {
+  margin: 0 0 6px 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #222;
+}
+
+.product-price .price-amount {
+  color: $accent-color;
+}
+
+.product-quantity {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: #222;
+  font-family: 'Lato', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  gap: 24px; // ← 24px между надписью и полем
+}
+
+.quantity-input {
+  width: 43.19px;
+  height: 24.12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  color: #222;
+  background: #fff;
+  padding: 0;
+
+  // Скрываем стрелки по умолчанию в некоторых браузерах
+  appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+  }
+}
+
+
+
+// --- ПРАВАЯ КОЛОНКА: ДОСТАВКА И ИТОГ ---
+.cart__summary {
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+// Заголовок "SHIPPING ADDRESS"
+.shipping-title {
+  margin-top: 17px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19px;
+  color: #222;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+// Группа полей
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-field {
+  width: 358.99px;
+  height: 44px;
+  border: 1px solid rgba(164, 164, 164, 1);
+  border-radius: 4px;
+  padding: 0 12px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  color: #222;
+  background: #fff;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: $accent-color;
+}
+
+// Кнопка "GET A QUOTE"
+.quote-btn {
+  width: 101.41px;
+  height: 35px;
+  border: 1px solid rgba(164, 164, 164, 1);
+  background: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 13px;
+  color: rgba(74, 74, 74, 1);
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 3px;
+
+  &:hover {
+    background: #f8f8f8;
+    border-color: #b8b8b8;
+  }
+}
+
+// Блок итога
+.price-block {
+  width: 360px;
+  height: 214px;
+  background: rgba(245, 243, 243, 1);
+  border-radius: 4px;
+  padding: 39px 34px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin-top: 37px;
+}
+
+.subtotal,
+.grand-total {
+  font-family: 'Lato', sans-serif;
+  margin: 0 0 12px 0;
+  text-align: right;
+}
+
+.subtotal {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  color: rgba(74, 74, 74, 1);
+}
+
+.subtotal .amount {
+  margin-left: 30px; // для выравнивания как в макете
+  color: $accent-color;
+}
+
+.grand-total {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #222;
+}
+
+.grand-total .amount {
+  color: $accent-color;
+  margin-left: 30px;
+}
+
+// Горизонтальная линия
+.divider {
+  width: 275px;
+  height: 1px;
+  background: rgba(226, 226, 226, 1);
+  border: none;
+  margin: 21px auto 17px;
+}
+
+// Кнопка "PROCEED TO CHECKOUT"
+.price-block .checkout-btn {
+  width: 273px;
+  height: 50px;
+  background: $accent-color;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19px;
+  border: none;
+  cursor: pointer;
+  align-self: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: darken($accent-color, 10%);
+  }
+}
+
+/* Small mobile adjustments (≤375px) */
+@media (max-width: 375px) {
+  .burger-button {
+     margin-right: 25px;
+  }
+
+  .header_logo {
+    padding-left: 16px;
+  }
+
+  .catalog-nav .header_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px; 
+  }
+
+  .catalog-nav {
+    padding-top: 60px;
+    padding-bottom: 28px;
+    text-align: center;
+  }
+
+  .cart{
+    padding-top: 7px;
+    padding-bottom: 96px;
+
+    &__container{
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    &__columns{
+      flex-direction: column;
+      gap: 40px;
+      align-items: stretch;
+    }
+  }
+
+  .cart-item{
+    gap: 0;
+    margin-top: 32px;
+    &__image{
+    width: 144px;
+    height: 188px;
+    }
+
+    &__details{
+      width: 214px;
+      height: 188px;
+      padding-top: 13px;
+      padding-left: 17px;
+    }
+  }
+
+  .remove-btn{
+    width: 11px;
+    height: 11px;
+    top: 17px;
+    right: 12px;
+    svg {
+      width: 11px;
+      height: 11px;
+
+      path {
+        fill: #575757;
+      }
+    }
+  }
+
+  .details-row{
+    margin-bottom: 26px;
+  }
+
+  .product-title{
+    font-size: 16px;
+    width: 140px;
+    height: 35px;
+    line-height: 19px;
+  }
+
+  .product-price, .price-amount, .product-info, .product-quantity{
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .cart-actions{
+    padding-top: 32px;
+    display: flex;
+    flex-direction: row; // или row + wrap
+    gap: 8px; // ← уменьшаем отступ!
+
+
+    .btn-clear,
+    .btn-continue {
+      width: 100%;
+      max-width: 175px;
+      height: 33px;
+      min-height: 33px;
+      padding: 8px 12px;
+      font-size: 12px;
+      line-height: 14px;
+      white-space: normal;
+      text-align: center;
+      align-self: flex-start; // чтобы не растягивались на всю ширину
+
+      // Убедимся, что box-sizing работает
+      box-sizing: border-box;
+    }
+  }
+
+  .shipping-title{
+    margin-top: 8px;
+    margin-bottom: 0px;
+  }
+
+  .price-block{
+    margin-top: 28px;
+  }
+
+  .grand-total{
+    margin-bottom: 0px;
+  }
+}
+
+/* Medium mobile adjustments (≤425px) — same as 375px */
+@media (max-width: 425px) {
+  .burger-button {
+    margin-right: 25px;
+  }
+
+  .header_logo {
+    padding-left: 16px;
+  }
+
+  .catalog-nav .header_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .catalog-nav {
+    padding-top: 60px;
+    padding-bottom: 69px;
+    text-align: center;
+  }
+
+  .cart {
+    padding-top: 7px;
+    padding-bottom: 96px;
+
+    &__container {
+      padding-left: 33px;
+      padding-right: 33px;
+    }
+
+    &__columns {
+      flex-direction: column;
+      gap: 40px;
+      align-items: stretch;
+    }
+  }
+
+  .cart-item {
+    gap: 0;
+    margin-top: 32px;
+
+    &__image {
+      width: 144px;
+      height: 188px;
+    }
+
+    &__details {
+      width: 214px;
+      height: 188px;
+      padding-top: 13px;
+      padding-left: 17px;
+    }
+  }
+
+  .remove-btn {
+    width: 11px;
+    height: 11px;
+    top: 17px;
+    right: 12px;
+
+    svg {
+      width: 11px;
+      height: 11px;
+
+      path {
+        fill: #575757;
+      }
+    }
+  }
+
+  .details-row {
+    margin-bottom: 26px;
+  }
+
+  .product-title {
+    font-size: 16px;
+    width: 140px;
+    height: 35px;
+    line-height: 19px;
+  }
+
+  .product-price,
+  .price-amount,
+  .product-info,
+  .product-quantity {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .cart-actions {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    .btn-clear,
+    .btn-continue {
+      width: 100%;
+      max-width: 175px;
+      height: 33px;
+      min-height: 33px;
+      padding: 8px 12px;
+      font-size: 12px;
+      line-height: 14px;
+      white-space: normal;
+      text-align: center;
+      align-self: flex-start;
+      box-sizing: border-box;
+    }
+  }
+
+  .shipping-title {
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+
+  .price-block {
+    margin-top: 28px;
+  }
+
+  .grand-total {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,21 @@
+@import 'variables';
+@import 'base';
+@import 'sidebar';
+@import 'product';
+@import 'catalog';
+@import 'registration';
+@import 'cart';
+
+.center {
+    padding-left: calc(50% - $width-site / 2);
+    padding-right: calc(50% - $width-site / 2);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+html, body {
+    overflow-x: hidden;
+}

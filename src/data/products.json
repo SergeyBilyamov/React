@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "ELLERY X M'O CAPSULE",
+    "description": "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.",
+    "price": "$52.00",
+    "image": "/img/product01.jpeg",
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "colors": ["black", "white", "navy"]
+  },
+  {
+    "id": 2,
+    "title": "ELLERY X M'O CAPSULE",
+    "description": "Modern minimalist design with premium fabric. Perfect for everyday elegance.",
+    "price": "$52.00",
+    "image": "/img/product02.jpeg",
+    "sizes": ["XS", "S", "M", "L"],
+    "colors": ["gray", "charcoal", "beige"]
+  },
+  {
+    "id": 3,
+    "title": "ELLERY X M'O CAPSULE",
+    "description": "A timeless piece crafted for the modern woman who values sophistication.",
+    "price": "$52.00",
+    "image": "/img/product03.jpeg",
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": ["black", "red", "white"]
+  },
+  {
+    "id": 4,
+    "title": "ELLERY X M'O CAPSULE",
+    "description": "Blends comfort and style in one iconic silhouette.",
+    "price": "$52.00",
+    "image": "/img/product04.jpeg",
+    "sizes": ["XS", "S", "M"],
+    "colors": ["navy", "olive", "white"]
+  },
+  {
+    "id": 5,
+    "title": "ELLERY X M'O CAPSULE",
+    "description": "Inspired by urban architecture and clean lines.",
+    "price": "$52.00",
+    "image": "/img/product05.jpeg",
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": ["black", "gray", "tan"]
+  },
+  {
+    "id": 6,
+    "title": "ELLERY X M'O CAPSULE",
+    "description": "Handcrafted details meet avant-garde design.",
+    "price": "$52.00",
+    "image": "/img/product06.jpeg",
+    "sizes": ["XS", "S", "L", "XL"],
+    "colors": ["white", "black", "silver"]
+  }
+]
